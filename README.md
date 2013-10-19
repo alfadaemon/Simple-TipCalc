@@ -1,4 +1,4 @@
-firstAndroidApp
+Tip Calculator
 ===============
 
-My First Android App
+Android App that helps you calculate tips.

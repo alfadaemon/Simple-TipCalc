@@ -1,25 +1,92 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/txt_Bill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edt_bill"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:minEms="4"
+        android:paddingTop="10dp"
+        android:text="@string/txt_bill"
+        android:textAllCaps="false"
+        android:textSize="40sp" />
 
     <EditText
-        android:id="@+id/editMessage"
-        android:layout_width="0dp"
+        android:id="@+id/edt_bill"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:hint="@string/edit_message"
-        android:ems="10" >
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:hint="@string/txt_bill"
+        android:inputType="numberDecimal"
+        android:minEms="3"
+        android:selectAllOnFocus="true"
+        android:text="@string/edt_bill"
+        android:textSize="40sp" >
 
         <requestFocus />
     </EditText>
-    
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1.10"
-        android:onClick="sendMessage"
-        android:text="@string/button_send" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/txt_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_Bill"
+        android:layout_below="@+id/txt_Bill"
+        android:layout_marginTop="41dp"
+        android:minEms="4"
+        android:paddingTop="10dp"
+        android:text="@string/txt_tip"
+        android:textAllCaps="false"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/edt_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txt_tip"
+        android:layout_alignBottom="@+id/txt_tip"
+        android:layout_alignLeft="@+id/edt_bill"
+        android:hint="@string/txt_tip"
+        android:inputType="numberDecimal"
+        android:minEms="3"
+        android:selectAllOnFocus="true"
+        android:text="@string/edt_tip"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/txt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_tip"
+        android:layout_below="@+id/edt_tip"
+        android:layout_marginTop="37dp"
+        android:hint="@string/txt_total"
+        android:minEms="4"
+        android:paddingTop="10dp"
+        android:text="@string/txt_total"
+        android:textAllCaps="false"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/edt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txt_total"
+        android:layout_alignBottom="@+id/txt_total"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:hint="@string/txt_total"
+        android:inputType="numberDecimal"
+        android:minEms="3"
+        android:text="@string/edt_total"
+        android:textSize="40sp" />
+
+</RelativeLayout>

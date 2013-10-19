@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.outboxit.myfirstapp"
+    package="net.outboxit.tipcalc"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -14,20 +14,13 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="net.outboxit.myfirstapp.MainActivity"
+            android:name="net.outboxit.tipcalc.TipCalc"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="net.outboxit.myfirstapp.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="net.outboxit.myfirstapp.MainActivity" />
         </activity>
     </application>
 
