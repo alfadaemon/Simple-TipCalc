@@ -42,21 +42,49 @@ public class TipCalc extends Activity {
 		edtTip = (EditText) findViewById(R.id.edt_tip);
 		
 		edtBill.addTextChangedListener(edtBillListener);
+		edtTip.addTextChangedListener(edtTipListener);
 	}
+	
+	private TextWatcher edtTipListener = new TextWatcher(){
+
+		@Override
+		public void afterTextChanged(Editable s) {
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {			
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			try{
+				mTip = Double.parseDouble(s.toString());
+			} catch ( NumberFormatException e){
+				mTip = 0.10;
+			}
+			updateTotal();
+		}
+
+		private void updateTotal() {
+			mBill = Double.parseDouble(edtBill.getText().toString());
+			mTotal = mBill + (mBill*mTip);
+			
+			edtTotal.setText(String.format("%.02f", mTotal));
+		}
+		
+	};
 	
 	private TextWatcher edtBillListener = new TextWatcher(){
 
 		@Override
 		public void afterTextChanged(Editable arg0) {
-			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
 		public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
 				int arg3) {
-			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
