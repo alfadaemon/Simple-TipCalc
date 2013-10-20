@@ -12,5 +12,10 @@
     
     <string name="txt_total">Total</string>
     <string name="edt_total">0.00</string>
+    
+    <string name="txt_persons">Persons</string>
+    <string name="edt_persons">1</string>
+    
+    <string name="btn_split">Split</string>
 
 </resources>

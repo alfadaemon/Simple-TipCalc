@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.View;
 import android.widget.EditText;
 
 public class TipCalc extends Activity {
@@ -13,14 +14,18 @@ public class TipCalc extends Activity {
 	private static final String TOTAL_BILL = "TOTAL_BILL";
 	private static final String CURRENT_TIP = "CURRENT_TIP";
 	private static final String BILL = "BILL";
+	private static final String SPLIT = "SPLIT";
 	
 	private double mTotal;
 	private double mTip;
 	private double mBill;
+	private double mSplit;
 	
 	EditText edtBill;
 	EditText edtTotal;
 	EditText edtTip;
+	EditText edtPersons;
+	EditText edtSplit;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,8 @@ public class TipCalc extends Activity {
 		edtBill = (EditText) findViewById(R.id.edt_bill);
 		edtTotal = (EditText) findViewById(R.id.edt_total);
 		edtTip = (EditText) findViewById(R.id.edt_tip);
+		edtPersons = (EditText) findViewById(R.id.edt_persons);
+		edtSplit = (EditText) findViewById(R.id.edt_split);
 		
 		edtBill.addTextChangedListener(edtBillListener);
 		edtTip.addTextChangedListener(edtTipListener);
@@ -64,16 +71,8 @@ public class TipCalc extends Activity {
 			} catch ( NumberFormatException e){
 				mTip = 0.10;
 			}
-			updateTotal();
+			updateTipAndTotal();
 		}
-
-		private void updateTotal() {
-			mBill = Double.parseDouble(edtBill.getText().toString());
-			mTotal = mBill + (mBill*mTip);
-			
-			edtTotal.setText(String.format("%.02f", mTotal));
-		}
-		
 	};
 	
 	private TextWatcher edtBillListener = new TextWatcher(){
@@ -88,24 +87,37 @@ public class TipCalc extends Activity {
 		}
 
 		@Override
-		public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-				int arg3) {
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
 			try{
-				mBill = Double.parseDouble(arg0.toString());
+				mBill = Double.parseDouble(s.toString());
 			} catch ( NumberFormatException e){
 				mBill = 0.0;
 			}
 			updateTipAndTotal();
 		}
-
-		private void updateTipAndTotal() {
-			mTip = Double.parseDouble(edtTip.getText().toString());
-			mTotal = mBill + (mBill*mTip);
-			
-			edtTotal.setText(String.format("%.02f", mTotal));
-		}
-		
 	};
+	
+	private void updateTipAndTotal() {
+		//mBill = Double.parseDouble(edtBill.getText().toString());
+		//mTip = Double.parseDouble(edtTip.getText().toString());
+		mTotal = mBill + (mBill*mTip);
+		
+		edtTotal.setText(String.format("%.02f", mTotal));
+	}
+	
+	public void SplitBill(View v){
+		mBill = Double.parseDouble(edtBill.getText().toString());
+		mTip = Double.parseDouble(edtTip.getText().toString());
+		int persons = Integer.parseInt(edtPersons.getText().toString());
+		mTotal = mBill + (mBill*mTip);
+		try{
+			mSplit = mTotal / persons;
+		} catch (Exception e){
+			mSplit = mTotal;
+		}
+		edtSplit.setText(String.format("%.02f", mSplit));
+	}
 	
 	protected void onSaveInstanceState(Bundle outState){
 		super.onSaveInstanceState(outState);
@@ -113,6 +125,7 @@ public class TipCalc extends Activity {
 		outState.putDouble(BILL, mBill);
 		outState.putDouble(CURRENT_TIP, mTip);
 		outState.putDouble(TOTAL_BILL, mTotal);
+		outState.putDouble(SPLIT, mSplit);
 	}
 
 	@Override

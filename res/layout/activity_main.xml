@@ -5,7 +5,7 @@
     android:orientation="horizontal" >
 
     <TextView
-        android:id="@+id/txt_Bill"
+        android:id="@+id/txt_bill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edt_bill"
@@ -34,19 +34,6 @@
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/txt_tip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txt_Bill"
-        android:layout_below="@+id/txt_Bill"
-        android:layout_marginTop="41dp"
-        android:minEms="4"
-        android:paddingTop="10dp"
-        android:text="@string/txt_tip"
-        android:textAllCaps="false"
-        android:textSize="40sp" />
-
     <EditText
         android:id="@+id/edt_tip"
         android:layout_width="wrap_content"
@@ -59,20 +46,6 @@
         android:minEms="3"
         android:selectAllOnFocus="true"
         android:text="@string/edt_tip"
-        android:textSize="40sp" />
-
-    <TextView
-        android:id="@+id/txt_total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txt_tip"
-        android:layout_below="@+id/edt_tip"
-        android:layout_marginTop="37dp"
-        android:hint="@string/txt_total"
-        android:minEms="4"
-        android:paddingTop="10dp"
-        android:text="@string/txt_total"
-        android:textAllCaps="false"
         android:textSize="40sp" />
 
     <EditText
@@ -92,5 +65,83 @@
         android:text="@string/edt_total"
         android:textSize="45sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_tip"
+        android:layout_below="@+id/edt_tip"
+        android:hint="@string/txt_total"
+        android:minEms="4"
+        android:paddingTop="10dp"
+        android:text="@string/txt_total"
+        android:textAllCaps="false"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/txt_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_bill"
+        android:layout_below="@+id/txt_bill"
+        android:minEms="4"
+        android:paddingTop="10dp"
+        android:text="@string/txt_tip"
+        android:textAllCaps="false"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/edt_persons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edt_split"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/txt_persons"
+        android:inputType="number"
+        android:minEms="3"
+        android:selectAllOnFocus="true"
+        android:text="@string/edt_persons"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/edt_split"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_persons"
+        android:clickable="false"
+        android:ems="10"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/txt_total"
+        android:inputType="numberDecimal"
+        android:minEms="3"
+        android:text="@string/edt_total"
+        android:textSize="45sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_split"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edt_split"
+        android:layout_alignLeft="@+id/txt_persons"
+        android:onClick="SplitBill"
+        android:text="@string/btn_split" />
+
+    <TextView
+        android:id="@+id/txt_persons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edt_split"
+        android:layout_alignLeft="@+id/txt_total"
+        android:minEms="4"
+        android:paddingTop="10dp"
+        android:text="@string/txt_persons"
+        android:textAllCaps="false"
+        android:textSize="40sp" />
 
 </RelativeLayout>
